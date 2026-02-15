@@ -1,0 +1,68 @@
+import mongoose from "mongoose";
+
+const companySchema = new mongoose.Schema({
+    name:{
+        type:String,
+        required:true,
+        unique:true
+    },
+    description:{
+        type:String, 
+    },
+    industry:{
+        type:String,
+    },
+    companySize:{
+        type:String,
+    },
+    headquarters:{
+        type:String,
+    },
+    foundedYear:{
+        type:Number,
+    },
+    website:{
+        type:String 
+    },
+    socialLinks:{
+        linkedin:{
+            type:String
+        },
+        twitter:{
+            type:String
+        }
+    },
+    techStack:[{
+        type:String
+    }],
+    benefits:[{
+        type:String
+    }],
+    culture:{
+        type:String
+    },
+    rating:{
+        type:Number,
+        default:0
+    },
+    totalReviews:{
+        type:Number,
+        default:0
+    },
+    openPositions:{
+        type:Number,
+        default:0
+    },
+    location:{
+        type:String 
+    },
+    logo:{
+        type:String // URL to company logo
+    },
+    userId:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'User',
+        required:true
+    }
+},{timestamps:true})
+export const Company = mongoose.model("Company", companySchema);
